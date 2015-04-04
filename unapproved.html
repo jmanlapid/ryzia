@@ -1,0 +1,18 @@
+<template name="unapproved">
+	<body>
+		{{> navbar}}
+		<h1>Fresh new videos</h1>
+		<h2>Approve/Deny</h2>
+		<div class="container">
+			{{#each unapproved_videos}}
+				<ul class="list-group">
+					<li class="list-group-item">Title: {{title}}</li>
+					<li class="list-group-item">Artist: {{artist}}</li>
+					<li class="list-group-item">Email: {{email}}</li>
+					<li class="list-group-item">Added: {{added}}</li>
+					<li class="list-group-item">Url: {{url}}</li>
+				</ul>
+			{{/each}}
+		</div>
+	</body>
+</template>
