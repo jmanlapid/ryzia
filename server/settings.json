@@ -1,9 +1,0 @@
-{
-	"AWS": {
-		"ACCESS_ID": "AKIAINIZDNNM74TEWMZA",
-		"ACCESS_KEY": "01smudvtbJyM2V5GkTHh8nW8d7/O53sQBtiOs4oS",
-		"PREFIX_UNENCODED": "unencoded",
-		"PREFIX_ENCDODED": "encoded",
-		"BUCKET_NAME": "ryzia-test"
-	}
-}
