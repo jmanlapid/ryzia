@@ -6,6 +6,6 @@
 
 meteor-platform
 autopublish
-insecure
 twbs:bootstrap
 edgee:slingshot
+iron:router
