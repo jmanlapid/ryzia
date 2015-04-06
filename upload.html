@@ -2,35 +2,62 @@
 	<head>
 	  <title>Ryzia - Upload Video</title>
 	</head>
-
 	<body>
 		{{> navbar}}
 	  	<div class="container">
-			<h1>Submit Video</h1>
-			<form id="form" method="post" enctype="multipart/form-data">
-				<div class="form-group">
-					<label for="file">Video File</label>
-					<input type="file" name="file" id="file" required>
-				</div>
-				<div class="form-group">
-					<label for="title">Video Title</label>
-					<input type="text" class="form-control" name="title" id="title" placeholder="Brain Stew" required>
-				</div>
-				<div class="form-group">
-					<label for="artist">Artist Name</label>
-					<input type="text" class="form-control" name="artist" id="artist" placeholder="Green Day" required>
-				</div>
-				<div class="form-group">
-					<label for="email">Email Address</label>
-					<input type="email" class="form-control" name="email" id="email" placeholder="greenday@example.com" required>
-				</div>
-				<div class="form-group">
-					<label for="genres">Genres</label>
-					<input type="text" class="form-control" name="genres" id="genres" placeholder="rock, alternative rock, alt-rock, progressive">
-					<p class="help-block">optional - each genre separated by a comma (,)</p>
-				</div>
-				<button type="submit" class="btn btn-success">Submit</button>
-			</form>
+		  	<div class="row">
+				<h1>Submit Video</h1>
+				<form id="form" method="post" enctype="multipart/form-data">
+					<div class="form-group">
+						<label for="file">Video File</label>
+						<input type="file" name="file" id="file" required>
+					</div>
+					<div class="form-group">
+						<label for="title">Video Title</label>
+						<input type="text" class="form-control" name="title" id="title" placeholder="Brain Stew" required>
+					</div>
+					<div class="form-group">
+						<label for="artist">Artist Name</label>
+						<input type="text" class="form-control" name="artist" id="artist" placeholder="Green Day" required>
+					</div>
+					<div class="form-group">
+						<label for="email">Email Address</label>
+						<input type="email" class="form-control" name="email" id="email" placeholder="greenday@example.com" required>
+					</div>
+					<div class="form-group">
+						<label for="genres">Genres</label>
+						<input type="text" class="form-control" name="genres" id="genres" placeholder="rock, alternative rock, alt-rock, progressive">
+						<p class="help-block">optional - each genre separated by a comma (,)</p>
+					</div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+			<div class="row">
+				{{> progressBar}}
+			</div>
+			<div class="row">
+				<h3></h3>
+				{{#if uploadSuccess}}
+					<div class="alert alert-success" role="alert">
+					<strong>Upload Successful! </strong>
+					Your video is being reviewed. If it is approved it will be publicy viewable otherwise it is deleted. You will receive an email either way.
+					</div>
+				{{/if}}
+				{{#if uploadFailure}}
+					<div class="alert alert-danger" role="alert">
+						<strong>Upload Failed! </strong>
+						Your upload failed! Please try again and make sure you have a stable internet connection.
+					</div>
+				{{/if}}
+			</div>
 	  	</div>
 	</body>
+</template>
+
+<template name="progressBar">
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%;">
+      <span class="sr-only">{{progress}}% Complete</span>
+    </div>
+  </div>
 </template>

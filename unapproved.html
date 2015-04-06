@@ -1,17 +1,27 @@
 <template name="unapproved">
 	<body>
 		{{> navbar}}
-		<h1>Fresh new videos</h1>
-		<h2>Approve/Deny</h2>
 		<div class="container">
+			<h1>Fresh New Videos</h1>
 			{{#each unapproved_videos}}
-				<ul class="list-group">
-					<li class="list-group-item">Title: {{title}}</li>
-					<li class="list-group-item">Artist: {{artist}}</li>
-					<li class="list-group-item">Email: {{email}}</li>
-					<li class="list-group-item">Added: {{added}}</li>
-					<li class="list-group-item">Url: {{url}}</li>
-				</ul>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3>{{title}} by {{artist}}</h3>
+					</div>
+					<div class="panel-body">
+						<video id="example_video_1" class="video-js vjs-default-skin"
+	  					controls preload="auto" width="640" height="264"
+	  					poster="http://www.clipartbest.com/cliparts/bcy/Egx/bcyEgxxzi.png"
+	  					data-setup='{"example_option":true}'>
+		 					<source src="http://d1mzh3upct8ych.cloudfront.net/unencoded/am-i-small.mp4" type='video/mp4' />
+		 					<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+						</video>
+						<button class="btn btn-success">Approve</button>
+						<button class="btn btn-danger">Deny</button>
+					</div>
+				</div>
+			{{else}}
+				<div class="alert alert-info" role="alert">There are no submissions to review.</div>
 			{{/each}}
 		</div>
 	</body>

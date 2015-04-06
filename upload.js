@@ -1,3 +1,5 @@
+
+
 if (Meteor.isClient) {
   Template.upload.events({
     "submit #form": function(e) {
@@ -23,13 +25,16 @@ if (Meteor.isClient) {
         email: email,
         genres: genresArr
       };
-      
+
       var uploader = new Slingshot.Upload('ryzia', metaContext);
+
       uploader.send(file, function (err, downloadUrl) {
         if (err) {
+          Session.set('uploadFailure', false);
           console.error('Error uploading', uploader.xhr.response);
         } else {
           Meteor.call('addVideo', title, artist, email, genresArr, downloadUrl);
+          Session.set('uploadSuccess', true);
         }
       });
     
@@ -37,22 +42,34 @@ if (Meteor.isClient) {
     }
 
   });
+
+  Template.upload.helpers({
+    uploadSuccess: function () {
+      return Session.get('uploadSuccess');
+    },
+    uploadFailure: function () {
+      return Session.get('uploadFailure');
+    }
+  });
 }
 
 if (Meteor.isServer) {
-  Meteor.startup(function () {
-    function normalizeS3 (str) {
-      return str.replace(/[`~!@#$%^&*()|+=÷¿?;:'",.<>\{\}\[\]\\\/]/gi, '')
-      .replace(/ /gi, '-')
-      .toLowerCase();
-    }
+  var GLOBAL_KEY;
 
+  function normalizeS3 (str) {
+    return str.replace(/[`~!@#$%^&*()|+=÷¿?;:'",.<>\{\}\[\]\\\/]/gi, '')
+    .replace(/ /gi, '-')
+    .toLowerCase();
+  }
+
+  Meteor.startup(function () {
     Slingshot.createDirective('ryzia', Slingshot.S3Storage, {
       AWSAccessKeyId: Meteor.settings.AWS.ACCESS_ID,
       AWSSecretAccessKey: Meteor.settings.AWS.ACCESS_KEY,
       bucket: Meteor.settings.AWS.BUCKET_NAME,
       key: function(file, metaContext) {
-        return Meteor.settings.AWS.PREFIX_UNENCODED + '/' + normalizeS3(metaContext.artist) + '-' + normalizeS3(metaContext.title) + '-' + file.name;
+        GLOBAL_KEY = Meteor.settings.AWS.PREFIX_UNENCODED + '/' + normalizeS3(metaContext.artist) + '-' + normalizeS3(metaContext.title) + '-' + file.name;
+        return GLOBAL_KEY;
       },
       maxSize: 10 * 1024 * 1024,
       allowedFileTypes: ['video/mp4'],
@@ -61,18 +78,22 @@ if (Meteor.isServer) {
       }
     });
   });
+
+  Meteor.methods({
+    addVideo: function (title, artist, email, genres) {
+      Videos.insert({
+        title: title,
+        artist: artist,
+        email: email,
+        genres: genres,
+        approved: false,
+        added: new Date(),
+        keys: {
+          unencoded: GLOBAL_KEY
+        }
+      });
+    }
+  });
 }
 
-Meteor.methods({
-  addVideo: function (title, artist, email, genres, url) {
-    Videos.insert({
-      title: title,
-      artist: artist,
-      email: email,
-      genres: genres,
-      approved: false,
-      added: new Date(),
-      url: url
-    });
-  }
-});
+
