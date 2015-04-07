@@ -56,11 +56,7 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   var GLOBAL_KEY;
 
-  function normalizeS3 (str) {
-    return str.replace(/[`~!@#$%^&*()|+=÷¿?;:'",.<>\{\}\[\]\\\/]/gi, '')
-    .replace(/ /gi, '-')
-    .toLowerCase();
-  }
+
 
   Meteor.startup(function () {
     Slingshot.createDirective('ryzia', Slingshot.S3Storage, {
@@ -68,7 +64,7 @@ if (Meteor.isServer) {
       AWSSecretAccessKey: Meteor.settings.AWS.ACCESS_KEY,
       bucket: Meteor.settings.AWS.BUCKET_NAME,
       key: function(file, metaContext) {
-        GLOBAL_KEY = Meteor.settings.AWS.PREFIX_UNENCODED + '/' + normalizeS3(metaContext.artist) + '-' + normalizeS3(metaContext.title) + '-' + file.name;
+        GLOBAL_KEY = Meteor.settings.AWS.UNENCODED_PREFIX + '/' + utils.formatS3(metaContext.artist) + '-' + utils.formatS3(metaContext.title) + '-' + file.name;
         return GLOBAL_KEY;
       },
       maxSize: 10 * 1024 * 1024,

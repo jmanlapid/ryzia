@@ -11,14 +11,14 @@
 					<div class="panel-body">
 						<video id="example_video_1" class="video-js vjs-default-skin"
 	  					controls preload="auto" width="640" height="264"
-	  					poster="http://www.clipartbest.com/cliparts/bcy/Egx/bcyEgxxzi.png"
+	  					poster=""
 	  					data-setup='{"example_option":true}'>
-		 					<source src="http://d1mzh3upct8ych.cloudfront.net/unencoded/am-i-small.mp4" type='video/mp4' />
+		 					<source src="{{stream_url}}" type='video/mp4' />
 		 					<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 						</video>
-						<button class="btn btn-success">Approve</button>
-						<button class="btn btn-danger">Deny</button>
 					</div>
+					<button class="btn btn-success">Approve</button>
+					<button class="btn btn-danger">Deny</button>
 				</div>
 			{{else}}
 				<div class="alert alert-info" role="alert">There are no submissions to review.</div>
