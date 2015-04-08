@@ -55,9 +55,7 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   var GLOBAL_KEY;
-
-
-
+ 
   Meteor.startup(function () {
     Slingshot.createDirective('ryzia', Slingshot.S3Storage, {
       AWSAccessKeyId: Meteor.settings.AWS.ACCESS_ID,
@@ -68,7 +66,7 @@ if (Meteor.isServer) {
         return GLOBAL_KEY;
       },
       maxSize: 10 * 1024 * 1024,
-      allowedFileTypes: ['video/mp4'],
+      allowedFileTypes: ['video/mp4', 'video/mov', 'video/wmv', 'video/flv', 'video/avi'],
       authorize: function() {
         return true;
       }
@@ -83,7 +81,7 @@ if (Meteor.isServer) {
         email: email,
         genres: genres,
         approved: false,
-        added: new Date(),
+        submitted: new Date(),
         keys: {
           unencoded: GLOBAL_KEY
         }

@@ -10,7 +10,7 @@ if (Meteor.isClient) {
 
   Template.unapproved.helpers({
     unapproved_videos: function () {
-      return Videos.find({});
+      return Videos.find({approved: false});
     },
     stream_url: function () {
       return 'http://d1mzh3upct8ych.cloudfront.net/' + this.keys.unencoded;
@@ -65,7 +65,7 @@ if (Meteor.isServer) {
             Key: 'desktop.mp4',
             PresetId: Meteor.settings.AWS.PRESET_ID,
             Rotate: '0',
-            ThumbnailPattern:'{count}'
+            ThumbnailPattern:'thumb-{count}'
           }
         ]
       };
@@ -75,8 +75,40 @@ if (Meteor.isServer) {
 
       try {
         var result = createJobSync(params);
+        var jobId = result.Job.Id;
+        Meteor.call('get_completed_status', videoObj, jobId);
       } catch (e) {
         console.error('Error sending job to elastic transcoder: ' + e);
+      }
+    },
+
+    'get_completed_status': function (videoObj, jobId) {
+      var elasticTranscoder = new AWS.ElasticTranscoder();
+      var waitForSync = Meteor.wrapAsync(elasticTranscoder.waitFor, elasticTranscoder);
+      try {
+        var result = waitForSync('jobComplete', {Id: jobId});
+        var outputKeyPrefix = result.Job.OutputKeyPrefix;
+        var desktopKey = outputKeyPrefix + result.Job.Output.Key;
+        var thumbnailKey = outputKeyPrefix + 'thumb-00001.png';
+        Videos.update(
+          videoObj,
+          {
+            $set: {
+              "approved": true,
+              "approved_date": new Date(),
+              "keys.desktop": desktopKey,  
+              "keys.thumbnail": thumbnailKey
+            }
+          },
+          {
+            $unset: {
+              "keys.unencoded": ""
+            }
+          }
+        );
+        console.log(JSON.stringify(videoObj));
+      } catch (e) {
+        console.error('Error waiting for encoder job to complete: ' + e);
       }
     }
   });

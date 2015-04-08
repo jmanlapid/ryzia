@@ -1,0 +1,13 @@
+<template name="approved">
+	{{> navbar}}
+	<div class="container">
+		<div class="row">
+			{{#each approved}}
+				<div class="col-md-4">
+					<h4>{{artist}} - {{title}}</h4>
+					<img src="{{thumbnail_url}}" alt="Thumbnail unavailable." style="width:192px;height:144px">
+				</div>
+			{{/each}}
+		</div>
+	</div>
+</template>

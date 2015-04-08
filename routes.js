@@ -14,6 +14,10 @@ Router.map( function () {
   });
 });
 
+Router.route('/approved', function () {
+  this.render('/approved')
+});
+
 Router.route('/upload', function() {
 	this.render('upload');
 }); 
