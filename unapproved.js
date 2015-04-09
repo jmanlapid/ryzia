@@ -106,7 +106,6 @@ if (Meteor.isServer) {
             }
           }
         );
-        console.log(JSON.stringify(videoObj));
       } catch (e) {
         console.error('Error waiting for encoder job to complete: ' + e);
       }

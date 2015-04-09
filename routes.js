@@ -3,19 +3,25 @@ Router.route('/', function () {
 });
 
 Router.map( function () {
-  this.route('unapproved',{
+  this.route('unapproved', {
   	path: '/unapproved',
     waitOn: function() {
-        return [
-        	IRLibLoader.load('http://vjs.zencdn.net/4.12/video.js'),
-        	IRLibLoader.load('http://vjs.zencdn.net/4.12/video-js.css')
-        ]
+      return [
+      	IRLibLoader.load('http://vjs.zencdn.net/4.12/video.js')
+      ]
     }
   });
 });
 
-Router.route('/approved', function () {
-  this.render('/approved')
+Router.map( function () {
+  this.route('approved', {
+    path: '/approved',
+    waitOn: function() {
+      return [
+        IRLibLoader.load('http://vjs.zencdn.net/4.12/video.js')
+      ]
+    }
+  });
 });
 
 Router.route('/upload', function() {
