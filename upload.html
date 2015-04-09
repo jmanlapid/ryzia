@@ -11,6 +11,7 @@
 					<div class="form-group">
 						<label for="file">Video File</label>
 						<input type="file" name="file" id="file" required>
+						<p class="help-block">10MB size upload limit of type mp4, flv, mov, avi, or wmv</p>
 					</div>
 					<div class="form-group">
 						<label for="title">Video Title</label>
@@ -32,9 +33,9 @@
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
 			</div>
-			<!--div class="row">
+			<div class="row" id="progressBar" style="display:none">
 				{{> progressBar}}
-			</div-->
+			</div>
 			<div class="row">
 				<h3></h3>
 				{{#if uploadSuccess}}
@@ -56,7 +57,7 @@
 
 <template name="progressBar">
   <div class="progress">
-    <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%;">
+    <div class="progress-bar" role="progressbar progress-bar-striped active" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress}}%;">
       <span class="sr-only">{{progress}}% Complete</span>
     </div>
   </div>

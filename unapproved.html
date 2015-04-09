@@ -1,7 +1,7 @@
 <template name="unapproved">
 	<body>
 		{{> navbar}}
-		<div class="container">
+		<div class="container" id="unapproved_videos">
 			<h1>Fresh New Videos</h1>
 			{{#each unapproved_videos}}
 				<div class="panel panel-primary">
@@ -17,8 +17,10 @@
 		 					<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 						</video>
 					</div>
-					<button class="btn btn-success">Approve</button>
-					<button class="btn btn-danger">Deny</button>
+					<div>
+						<button class="btn btn-success">Approve</button>
+						<button class="btn btn-danger">Deny</button>
+					</div>
 				</div>
 			{{else}}
 				<div class="alert alert-info" role="alert">There are no submissions to review.</div>

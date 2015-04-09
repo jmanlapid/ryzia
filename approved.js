@@ -3,7 +3,6 @@ if (Meteor.isClient) {
   Template.approved.events({
     'click img': function () {
       Session.set('video_url', CLIENT_SETTINGS.CLOUDFRONT_URL + this.keys.desktop);
-      alert(CLIENT_SETTINGS.CLOUDFRONT_URL + this.keys.desktop);
     }
   });
 
