@@ -1,8 +1,18 @@
-
-
 if (Meteor.isClient) {
+  var uploaderReference = new Slingshot.Upload('init');
+
   Template.upload.events({
-    "submit #form": function(e) {
+    'change #file': function (e) {
+      var URL = window.URL || window.webkitURL;
+      var file = document.getElementById('file').files[0];
+      var type = file.type;
+      var fileURL = URL.createObjectURL(file);
+      Session.set({
+        'url': fileURL,
+        'type': type 
+      });
+    },
+    'submit #form': function (e) {
       var form = document.getElementById('form').elements;
       var file = form['file'].files[0];
       var genres = form['genres'].value;
@@ -27,7 +37,9 @@ if (Meteor.isClient) {
       };
 
       var uploader = new Slingshot.Upload('ryzia', metaContext);
+      uploaderReference = uploader;
 
+      Session.set('uploading', true);
       uploader.send(file, function (err, downloadUrl) {
         if (err) {
           Session.set('uploadFailure', false);
@@ -35,6 +47,8 @@ if (Meteor.isClient) {
         } else {
           Meteor.call('addVideo', title, artist, email, genresArr, downloadUrl);
           Session.set('uploadSuccess', true);
+          $('#form').hide();
+          Session.set('uploading', false);
         }
       });
     
@@ -49,6 +63,27 @@ if (Meteor.isClient) {
     },
     uploadFailure: function () {
       return Session.get('uploadFailure');
+    },
+    url: function () {
+      return Session.get('url');
+    },
+    uploading: function () {
+      return Session.get('uploading');
+    }
+  });
+
+  Template.preview.helpers({
+    url: function () {
+      return Session.get('url');
+    },
+    type: function () {
+      return Session.get('type');
+    }
+  });
+
+  Template.progressBar.helpers({
+    progress: function () {
+      return Math.round(uploaderReference.progress() * 100);
     }
   });
 }
@@ -66,7 +101,7 @@ if (Meteor.isServer) {
         return GLOBAL_KEY;
       },
       maxSize: 10 * 1024 * 1024,
-      allowedFileTypes: ['video/mp4', 'video/mov', 'video/wmv', 'video/flv', 'video/avi'],
+      allowedFileTypes: ['video/mp4'],
       authorize: function() {
         return true;
       }

@@ -4,7 +4,7 @@
 		<div class="jumbotron">
 			<div class="container">
 				<video id="{{video_url}}"  class="video-js vjs-default-skin" controls
-	 				preload="auto" width="640" height="264" poster="{{thumbnail_url}}"
+	 				preload="auto" poster="{{thumbnail_url}}"
 	 				data-setup="{}">
 	 				<source src="{{video_url}}" type='video/mp4'>
 				</video>
@@ -18,7 +18,7 @@
 			{{#each approved}}
 				<div class="col-md-4">
 					<h4>{{artist}} - {{title}}</h4>
-					<a href=""><img src="{{thumbnail_url}}" alt="Thumbnail unavailable." style="width:192px;height:144px"></a>
+					<a href=""><img src="{{thumbnail_url}}" alt="Thumbnail unavailable." width="192" height="144"></a>
 				</div>
 			{{/each}}
 		</div>
