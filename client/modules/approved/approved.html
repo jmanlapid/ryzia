@@ -1,12 +1,11 @@
 <template name="approved">
 	{{> navbar}}
-	{{#if video_url}}
+	{{#if player_vid_url}}
 		<div class="jumbotron">
 			<div class="container">
-				<video id="{{video_url}}"  class="video-js vjs-default-skin" controls
-	 				preload="auto" poster="{{thumbnail_url}}"
-	 				data-setup="{}">
-	 				<source src="{{video_url}}" type='video/mp4'>
+				<video class="video-js vjs-default-skin" controls
+	 				preload="auto" poster="{{player_thumbnail_url}}" autoplay>
+	 				<source src="{{player_vid_url}}" type='video/mp4'>
 				</video>
 			</div>
 		</div>
