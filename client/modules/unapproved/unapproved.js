@@ -17,6 +17,11 @@ if (Meteor.isClient) {
       );
       Session.set('success_message', this.title + ' by ' + this.artist + ' has been successfully deleted from storage.');
       Meteor.call('delete_s3', this);
+      //Meteor.call('email_denied', this);
+    },
+    'click #send_email': function () {
+      console.log('email_test trigger fired');
+      Meteor.call('send_email');
     }
   });
 
@@ -27,6 +32,16 @@ if (Meteor.isClient) {
     stream_url: function () {
       return 'http://d1mzh3upct8ych.cloudfront.net/' + this.keys.unencoded;
     }
+    /*
+    youtube_views: function () {
+      if (!this.youtube_id) return false;
+      Meteor.call('getYouTubeDetails', this.youtube_id, function (err, res) {
+        if (err) return false;
+        if (res.items[0]) Session.Set('youtube_views', res.items[0].statistics.viewCount);
+      });
+      return Session.get('youtube_views');
+    }
+    */
   });
 
   Template.unapproved.rendered = function () {

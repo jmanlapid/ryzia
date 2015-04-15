@@ -1,5 +1,6 @@
 if (Meteor.isClient) {
-  Session.set('video_url', null);
+  Session.set('player_vid_url', null);
+
   Template.approved.events({
     'click img': function () {
       Session.set('player_vid_url', CLIENT_SETTINGS.CLOUDFRONT_URL + this.keys.desktop);

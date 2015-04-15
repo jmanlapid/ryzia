@@ -15,10 +15,11 @@ if (Meteor.isClient) {
     'submit #form': function (e) {
       var form = document.getElementById('form').elements;
       var file = form['file'].files[0];
-      var genres = form['genres'].value;
       var title = form['title'].value;
       var artist = form['artist'].value;
       var email = form['email'].value;
+      var genres = form['genres'].value;
+      var youtube_id = form['youtube_id'].value;
 
       var genresArr = (function (genreStr) {
         var arr = [];
@@ -38,19 +39,22 @@ if (Meteor.isClient) {
 
       var uploader = new Slingshot.Upload('ryzia', metaContext);
       uploaderReference = uploader;
+      Meteor.call('addVideo', title, artist, email, genresArr, youtube_id);
 
+      /*
       Session.set('uploading', true);
       uploader.send(file, function (err, downloadUrl) {
         if (err) {
           Session.set('uploadFailure', false);
           console.error('Error uploading', uploader.xhr.response);
         } else {
-          Meteor.call('addVideo', title, artist, email, genresArr, downloadUrl);
+          Meteor.call('addVideo', title, artist, email, genresArr, youtube_id);
           Session.set('uploadSuccess', true);
           $('#form').hide();
           Session.set('uploading', false);
         }
       });
+      */
     
       return false;
     }
