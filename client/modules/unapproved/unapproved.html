@@ -2,31 +2,33 @@
 	<body>
 		{{> navbar}}
 		<div class="container-fluid" id="unapproved_videos">
-			<h1>Fresh New Videos</h1>
+			<h1 class="h1">Fresh New Videos</h1>
 			{{#each unapproved_videos}}
-				<div class="row">
-					<div class="col-sm-offset-1 col-sm-10">
-						<h3>{{title}} by {{artist}}</h3>
-						<div class="responsive-embed">
-							<video id="example_video_1" class="video-js vjs-default-skin"
-							controls preload="auto"
-							poster=""
-							data-setup='{"example_option":true}'>
-								<source src="{{stream_url}}" type='video/mp4' />
-								<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-							</video>
+				<div>
+					<div class="row">
+						<div class="col-sm-offset-1 col-sm-10">
+							<h3>{{title}} by {{artist}}</h3>
+							<div class="responsive-embed">
+								<video id="example_video_1" class="video-js vjs-default-skin"
+								controls preload="auto"
+								poster=""
+								data-setup='{"example_option":true}'>
+									<source src="{{stream_url}}" type='video/mp4' />
+									<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+								</video>
+							</div>
 						</div>
 					</div>
-				</div>
-				<br>
-				<div class="row">
-					<div class="col-sm-offset-1 col-sm-10">
-						<button class="btn btn-success">Approve</button>
-						<button class="btn btn-warning">Deny</button>
+					<br>
+					<div class="row">
+						<div class="col-sm-offset-1 col-sm-10 approve_deny">
+							<button class="btn btn-success">Approve</button>
+							<button class="btn btn-warning">Deny</button>
+						</div>
+						{{> deny_confirmation}}
 					</div>
+					<hr>
 				</div>
-				{{> deny_confirmation}}
-				<hr>
 			{{else}}
 				<div class="row">
 					<div class="alert alert-info" role="alert">There are no submissions to review.</div>
@@ -37,7 +39,7 @@
 </template>
 
 <template name="deny_confirmation">
-	<div class="row">
+	<div class="deny_confirmation" style="display:none">
 		<h3 class="col-sm-offset-1 col-sm-10">Deny Confirmation</h3>
 		<form class="form-horizontal">
 			<div class="form-group">
@@ -59,13 +61,13 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-1 col-sm-10">
-					<label for="comment" class="control-label">Comments</label>
-					<textarea class="form-control" rows="2" id="comment"></textarea>
+					<label for="comments" class="control-label">Comments</label>
+					<textarea class="form-control" rows="2" name="comments"></textarea>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-1 col-sm-10">
-					<button type="submit" class="btn btn-danger">Delete Video and Send Email</button>
+					<button class="btn btn-danger">Delete Video and Send Email</button>
 					<button class="btn btn-default">Cancel</button>
 				</div>
 			</div>

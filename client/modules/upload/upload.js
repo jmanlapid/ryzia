@@ -1,6 +1,6 @@
 if (Meteor.isClient) {
   var uploaderReference = new Slingshot.Upload('init');
-
+  
   Template.upload.events({
     'change #file': function (e) {
       var URL = window.URL || window.webkitURL;
@@ -38,10 +38,8 @@ if (Meteor.isClient) {
       };
 
       var uploader = new Slingshot.Upload('ryzia', metaContext);
-      uploaderReference = uploader;
-      Meteor.call('addVideo', title, artist, email, genresArr, youtube_id);
-
-      /*
+      uploaderReference = uploader;      
+      
       Session.set('uploading', true);
       uploader.send(file, function (err, downloadUrl) {
         if (err) {
@@ -54,8 +52,7 @@ if (Meteor.isClient) {
           Session.set('uploading', false);
         }
       });
-      */
-    
+
       return false;
     }
 
