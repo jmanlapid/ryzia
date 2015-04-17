@@ -1,6 +1,6 @@
 <template name="approved">
 	{{> navbar}}
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			{{#if player_vid_url}}
 				<div class="jumbotron">
@@ -9,17 +9,20 @@
 		 				<source src="{{player_vid_url}}" type='video/mp4'>
 					</video>
 				</div>
-			{{else}}
-				<h2>Click on one of the images below to play a video!</h2>
 			{{/if}}
 		</div>
 		<div class="row">
-			{{#each approved}}
-				<div class="col-md-4">
-					<h4>{{artist}} - {{title}}</h4>
-					<a href=""><img src="{{thumbnail_url}}" alt="Thumbnail unavailable." width="192" height="144"></a>
-				</div>
-			{{/each}}
+			<div class="col-sm-offset-1 col-sm-10">
+				{{#each approved}}
+					<h2 class="h2">Click a thumbnail below to play the video</h2>
+					<div class="col-sm-4">
+						<h4>{{artist}} - {{title}}</h4>
+						<a href=""><img src="{{thumbnail_url}}" alt="Thumbnail unavailable." width="192" height="144"></a>
+					</div>
+				{{else}}
+					<h2 class="h2">Upload and approve a video to play it</h2>
+				{{/each}}
+			</div>
 		</div>
 	</div>
 </template>

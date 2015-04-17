@@ -18,7 +18,6 @@ if (Meteor.isServer) {
       s3 = new AWS.S3();
       s3.deleteObject(params, Meteor.bindEnvironment(function (err, result) {
         if (err) return fut.error(err);
-        Videos.remove(videoObj);
         fut.return(result);
       }));
       return fut.wait();
@@ -91,14 +90,13 @@ if (Meteor.isServer) {
         text: text
       });
     },
-    email_approved: function (to, videoTitle, artist) {
-      console.log('email sent approved');
+    email_approved: function (videoObj) {
       this.unblock();
       var subject = 'Ryzia has approved your video';
-      var text = 'Hi ' + artist + ',\n';
-      text += 'Your video, ' + videoTitle +', has been approved. It is being encoded and should publicly be available shortly.';
+      var text = 'Hi ' + videoObj.artist + ',\n';
+      text += 'Your video, ' + videoObj.title +', has been approved. It is being encoded and should publicly be available shortly.';
       Email.send({
-        to: to,
+        to: videoObj.email,
         from: 'james@ryzia.com',
         subject: subject,
         text: text

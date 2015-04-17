@@ -6,14 +6,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">	
 	</head>
 	{{> navbar}}
-	<div class="container">
-		<h1>Ryzia Prototype</h1>
-		<p>Welcome to the demo</p>
-		<ul>
-			<li>Upload 2 videos</li>
-			<li>Approve a video</li>
-			<li>Deny a video</li>
-			<li>Play approved video</li>
-		</ul>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-offset-1 col-md-10">
+				<h1>Ryzia Prototype</h1>
+				<h2>4/18/15 Development Notes</h2>
+				<h3>Encoder Job Notifications</h3>
+				<p>At the previous demo, I had the server wait on encoding videos. This halts the server and is incredibly bad. I've gutted that out. The server now recieves a message from <a href="http://aws.amazon.com/sns/">Amazon AWS Simple Notification Service</a> at the http://ryzia.meteor.com/aws/sns/elastic-transcoder endpoint once the elastic transcoder job finished. The server then finalizes the video for public viewing via status:"APPROVED" data point.</p>
+				<h3>Approve/Deny Emailing</h3>
+				<p>Upload 2 videos with a legitimate e-mail. Approve/deny and the email associated with the video will recieve a message stating the conclusion. This is made possible by <a href="http://aws.amazon.com/ses">Amazon AWS Simple Email Service</a></p>
+				<h3>Video Support</h3>
+				<p>The table below shows us the support video formts to view videos on the web. I've limited the upload page to only accept .mp4, .webm, and .ogv (video/ogg format for clarification). On the unapproved page and depending on whether or not your browser supports the video, you may have to download the video through the instructions at the top.</p>
+				<p>Until we gather data on the videos artists are encoding it in I will extend support to those types.</p>
+				<img src="html_browser_support.png">
+			</div>
+		</div>
 	</div>
 </template>

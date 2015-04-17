@@ -11,7 +11,7 @@ if (Meteor.isServer) {
         return GLOBAL_KEY;
       },
       maxSize: 200 * 1024 * 1024,
-      allowedFileTypes: ['video/mp4', 'video/avi', 'video/flv', 'video/wmv', 'video/mov', 'video/mpeg'],
+      allowedFileTypes: ['video/mp4', 'video/webm', 'video/ogg'],
       authorize: function() {
         return true;
       }

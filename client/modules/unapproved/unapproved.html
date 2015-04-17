@@ -2,7 +2,19 @@
 	<body>
 		{{> navbar}}
 		<div class="container-fluid" id="unapproved_videos">
-			<h1 class="h1">Fresh New Videos</h1>
+			<div class="row">
+				<div class="col-sm-offset-1 col-sm-10">
+					<h1 class="h1">Fresh New Videos</h1>
+					<p>If your browser is unable to play a video for whatever reason:</p>
+					<ol>
+						<li>Right click the video</li>
+						<li>Save video as...</li> 
+						<li>View it locally on your machine</li>
+					</ol>
+					<p>The best open source video player is <a href="http://www.videolan.org/vlc/index.html">VLC Player</a>. 
+					It is capable of playing almost any video codec.</p>
+				</div>
+			</div>
 			{{#each unapproved_videos}}
 				<div>
 					<div class="row">

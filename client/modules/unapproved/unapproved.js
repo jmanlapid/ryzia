@@ -3,7 +3,6 @@ if (Meteor.isClient) {
 
   Template.unapproved.events({
     'click .btn-success': function (event, template) {
-      var parentDiv = $(event.currentTarget).parent();
       var message = this.title + ' by ' + this.artist + ' is now being encoded. An email will be sent to ' + this.email + ' when finished.';
       Session.set('success_message', message);
       Meteor.call('create_job', this);

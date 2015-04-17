@@ -6,7 +6,6 @@ if (Meteor.isServer) {
       var state = message.state;
       switch (state) {
         case 'COMPLETED': 
-          console.log('calling completed function');
           Meteor.call('finalize_job', message);
           break;
        default:
@@ -20,8 +19,11 @@ if (Meteor.isServer) {
       var desktopKey = outputKeyPrefix + 'desktop.mp4';
       var thumbnailKey = outputKeyPrefix + 'thumb-00001.png';
 
+      var videoObj = Videos.findOne({ jobId: jobId });
+      Meteor.call('delete_s3', videoObj.keys.unencoded);
+      Meteor.call('email_approved', videoObj);
       Videos.update(
-        { jobId: jobId }, 
+        videoObj, 
         {
           $set: {
             "status": "APPROVED",

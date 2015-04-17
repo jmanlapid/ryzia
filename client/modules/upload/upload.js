@@ -7,10 +7,17 @@ if (Meteor.isClient) {
       var file = document.getElementById('file').files[0];
       var type = file.type;
       var fileURL = URL.createObjectURL(file);
-      Session.set({
-        'url': fileURL,
-        'type': type 
-      });
+
+      function supports_video (type) {
+        var player = document.createElement('video');
+        return eval(!!player.canPlayType && !!player.canPlayType(type));
+        }
+      if (supports_video(type)) {
+        Session.set({
+          'url': fileURL,
+          'type': type 
+        });
+      }
     },
     'submit #form': function (e) {
       var form = document.getElementById('form').elements;
