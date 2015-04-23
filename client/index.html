@@ -11,12 +11,30 @@
 			<div class="col-sm-offset-1 col-md-10">
 				<h1>Ryzia Prototype</h1>
 				<h2>4/18/15 Development Notes</h2>
+				<h3>YouTube Video Details</h3>
+				<p>We're not sure how to implement the aggregate function yet. However, heres a quick demo below that fetches a video's details on YouTube by using the video id. For example, in the the link https://www.youtube.com/watch?v=qCrrjl6Xo2k, the video id is qCrrjl6Xo2k. </p>
+				<form id="form" class="form-horizontal" method="post" enctype="multipart/form-data">
+					<div class="form-group">
+						<label for="youtube_id" class="col-sm-2 control-label">YouTube Video ID</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="title" id="youtube_id" placeholder="qCrrjl6Xo2k" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-info">Get Details</button>
+						</div>
+					</div>
+				</form>
+				{{#if youtube_details}}
+					{{youtube_details}}
+				{{/if}}
 				<h3>Encoder Job Notifications</h3>
 				<p>At the previous demo, I had the server wait on encoding videos. This halts the server and is incredibly bad. I've gutted that out. The server now recieves a message from <a href="http://aws.amazon.com/sns/">Amazon AWS Simple Notification Service</a> at the http://ryzia.meteor.com/aws/sns/elastic-transcoder endpoint once the elastic transcoder job finished. The server then finalizes the video for public viewing via status:"APPROVED" data point.</p>
 				<h3>Approve/Deny Emailing</h3>
 				<p>Upload 2 videos with a legitimate e-mail. Approve/deny and the email associated with the video will recieve a message stating the conclusion. This is made possible by <a href="http://aws.amazon.com/ses">Amazon AWS Simple Email Service</a></p>
 				<h3>Video Support</h3>
-				<p>The table below shows us the support video formts to view videos on the web. I've limited the upload page to only accept .mp4, .webm, and .ogv (video/ogg format for clarification). On the unapproved page and depending on whether or not your browser supports the video, you may have to download the video through the instructions at the top.</p>
+				<p>The table below shows us the support video formats to view videos on the web. I've limited the upload page to only accept .mp4, .webm, and .ogv (video/ogg format for clarification). On the unapproved page and depending on whether or not your browser supports the video, you may have to download the video through the instructions at the top.</p>
 				<p>Until we gather data on the videos artists are encoding it in I will extend support to those types.</p>
 				<img src="html_browser_support.png">
 			</div>

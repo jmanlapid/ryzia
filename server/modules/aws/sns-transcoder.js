@@ -11,8 +11,7 @@ if (Meteor.isServer) {
        default:
           break
       }
-  },
-
+    },
     finalize_job: function (jobDetails) {
       var jobId = jobDetails.jobId;
       var outputKeyPrefix = jobDetails.outputKeyPrefix;

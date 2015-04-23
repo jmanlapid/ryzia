@@ -5,7 +5,7 @@ if (Meteor.isServer) {
   });
 
   Meteor.methods({
-    getYouTubeDetails: function (id) {
+    getYouTubeDetails_: function (id) {
       Future = Npm.require('fibers/future');
       var fut = new Future();
       var params = {
@@ -22,18 +22,13 @@ if (Meteor.isServer) {
       }));
       return fut.wait();
     },
-    getYouTubeDetails_sync: function (id) {
+    getYouTubeDetails: function (id) {
       var params = {
         key: 'AIzaSyAaq6keItnvEGtKcV5mvGH1D9QhT2Rw38U',
         part: 'contentDetails, statistics',
         id: id
       }
-      try {
-        var result = HTTP.call('GET', 'https://www.googleapis.com/youtube/v3/videos', {params: params});
-        return result.data;
-      } catch (e) {
-          console.error('Error http get in getYouTubeDetails: ' + e);
-      }
+      return HTTP.call('GET', 'https://www.googleapis.com/youtube/v3/videos', {params: params});
     }
   });
 }

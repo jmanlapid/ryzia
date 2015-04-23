@@ -1,23 +1,47 @@
 <template name="approved">
 	{{> navbar}}
 	<div class="container-fluid">
-		<div class="row">
-			{{#if player_vid_url}}
-				<div class="jumbotron">
-					<video id="player" class="video-js vjs-default-skin" controls
-		 				preload="auto" poster="{{player_thumbnail_url}}" autoplay>
-		 				<source src="{{player_vid_url}}" type='video/mp4'>
-					</video>
-				</div>
-			{{/if}}
-		</div>
-		<div class="row">
-			<div class="col-sm-offset-1 col-sm-10">
-				{{#each approved}}
-					<h2 class="h2">Click a thumbnail below to play the video</h2>
-					<div class="col-sm-4">
-						<h4>{{artist}} - {{title}}</h4>
+		<div id="player_div" class="jumbotron" style="display:none">
+			<div class="row">
+			<!--<div class="embed-responsive embed-responsive-16by9">-->
+				<video id="player" class="video-js vjs-default-skin" controls
+						preload="auto" width='350' height='200' poster="" autoplay>
+						<source id="source" src="" type='video/mp4'>
+				</video>
+			</div>
+			<div class="row">
+				{{#with playing}}
+					<h3>Now Playing</h3>
+					<h4>{{title}}</h4>
+					<h5>by {{artist}}</h5>
+					<h5>{{genres}}</h5>
+				{{/with}}
+				{{#with similar}}
+					<h3>Similar Video Queue</h3>
+				{{/with}}
+				{{#each similar}}
+					<div class='col-xs-6 col-sm-4 col-md-3 col-lg-3'>
 						<a href=""><img src="{{thumbnail_url}}" alt="Thumbnail unavailable." width="192" height="144"></a>
+						<h4>{{title}}</h4>
+						<h5>{{artist}}</h5>
+						<h5>Genres: {{genres}}</h5>
+					</div>
+				{{else}}
+					<h2>No more similar videos!</h2>
+				{{/each}}
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-sm-offset-1">
+				<h2>Brand Spankin New Videos!</h2>
+				<br>
+				{{#each approved}}
+					<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+						<a href=""><img src="{{thumbnail_url}}" alt="Thumbnail unavailable." width="192" height="144"></a>
+						<h4>{{title}}</h4>
+						<h5>{{artist}}</h5>
+						<p>Genres: {{genres}}</p>
 					</div>
 				{{else}}
 					<h2 class="h2">Upload and approve a video to play it</h2>
