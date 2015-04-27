@@ -19,8 +19,6 @@ if (Meteor.isServer) {
       var thumbnailKey = outputKeyPrefix + 'thumb-00001.png';
 
       var videoObj = Videos.findOne({ jobId: jobId });
-      Meteor.call('delete_s3', videoObj.keys.unencoded);
-      Meteor.call('email_approved', videoObj);
       Videos.update(
         videoObj, 
         {
@@ -28,7 +26,8 @@ if (Meteor.isServer) {
             "status": "APPROVED",
             "approved_date": new Date(),
             "keys.desktop": desktopKey,  
-            "keys.thumbnail": thumbnailKey
+            "keys.thumbnail": thumbnailKey,
+            "views.ryzia": 0
           }
         },
         {
@@ -37,6 +36,8 @@ if (Meteor.isServer) {
           }
         }
       );
+      Meteor.call('delete_s3', videoObj.keys.unencoded);
+      Meteor.call('email_approved', videoObj);
     }
   });
 }

@@ -1,9 +1,9 @@
 <template name="unapproved">
 	<body>
 		{{> navbar}}
-		<div class="container-fluid" id="unapproved_videos">
+		<div class="container" id="unapproved_videos">
 			<div class="row">
-				<div class="col-sm-offset-1 col-sm-10">
+				<div class="col-sm-offset-2 col-sm-6">
 					<h1 class="h1">Fresh New Videos</h1>
 					<p>If your browser is unable to play a video for whatever reason:</p>
 					<ol>
@@ -18,13 +18,12 @@
 			{{#each unapproved_videos}}
 				<div>
 					<div class="row">
-						<div class="col-sm-offset-1 col-sm-10">
+						<div class="col-sm-offset-2 col-sm-6">
 							<h3>{{title}} by {{artist}}</h3>
-							<div class="responsive-embed">
-								<video id="example_video_1" class="video-js vjs-default-skin"
+							<div class="embed-responsive embed-responsive-16by9">
+								<video
 								controls preload="auto"
-								poster=""
-								data-setup='{"example_option":true}'>
+								poster="">
 									<source src="{{stream_url}}" type='video/mp4' />
 									<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 								</video>
@@ -33,7 +32,10 @@
 					</div>
 					<br>
 					<div class="row">
-						<div class="col-sm-offset-1 col-sm-10 approve_deny">
+						<div class="col-sm-offset-2 col-sm-6 approve_deny">
+							{{#if youtube_id}}
+								<a href="http://youtube.com/watch?v={{youtube_id}}" target="_blank"><button class="btn btn-primary">Check YouTube Link</button></a>
+							{{/if}}
 							<button class="btn btn-success">Approve</button>
 							<button class="btn btn-warning">Deny</button>
 						</div>
@@ -69,6 +71,11 @@
 				    <div class="checkbox">
 				    	<label><input type="checkbox" value="Unable to open">Unable to open</label>
 				    </div>
+				    {{#if youtube_id}}
+					    <div class="checkbox">
+					    	<label><input type="checkbox" value="YouTube ID is not valid">YouTube ID not valid</label>
+					    </div>
+				   	{{/if}}
 				</div>
 			</div>
 			<div class="form-group">

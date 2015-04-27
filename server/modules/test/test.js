@@ -7,9 +7,14 @@ if (Meteor.isServer) {
         artist: 'video1',
         genres: ['rock'],
         status: 'APPROVED',
+        youtube_id: 'nhX4rQ79C1A',
+        approved_date: new Date(),
         keys: { 
           desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
           thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+        },
+        views: {
+          ryzia: 90
         }
       });
 
@@ -18,9 +23,14 @@ if (Meteor.isServer) {
         artist: 'video52',
         genres: ['rock'],
         status: 'APPROVED',
+        youtube_id: 'TbGu4mxZDY8',
+        approved_date: new Date(),
         keys: { 
           desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
           thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+        },
+        views: {
+          ryzia: 15
         }
       });
 
@@ -29,9 +39,14 @@ if (Meteor.isServer) {
         artist: 'artist23',
         genres: ['pop'],
         status: 'APPROVED',
+        youtube_id: 'GELJIgoBwbU',
+        approved_date: new Date(),
         keys: { 
           desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
           thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+        },
+        views: {
+          ryzia: 12
         }
       });
 
@@ -40,6 +55,10 @@ if (Meteor.isServer) {
         artist: 'artist45',
         genres: ['indie'],
         status: 'APPROVED',
+        approved_date: new Date(),
+        views: {
+          ryzia: 3
+        },
         keys: { 
           desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
           thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
@@ -51,17 +70,23 @@ if (Meteor.isServer) {
         artist: 'artist33',
         genres: ['metal'],
         status: 'APPROVED',
+        approved_date: new Date(),
+        views: {
+          ryzia: 1
+        },
         keys: { 
           desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
           thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
         }
       });
 
+/*
       FakeVideos.insert({
         title: 'video532',
         artist: 'artist522',
         genres: ['edm'],
         status: 'APPROVED',
+        approved_date: new Date(),
         keys: { 
           desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
           thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
@@ -73,6 +98,7 @@ if (Meteor.isServer) {
         artist: 'artist37',
         genres: ['r&b'],
         status: 'APPROVED',
+        approved_date: new Date(),
         keys: { 
           desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
           thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
@@ -80,10 +106,11 @@ if (Meteor.isServer) {
       });
 
       FakeVideos.insert({
-        title: 'video1',
-        artist: 'artist1',
+        title: 'video5432',
+        artist: 'artist73423',
         genres: ['hip hop'],
         status: 'APPROVED',
+        approved_date: new Date(),
         keys: { 
           desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
           thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
@@ -92,9 +119,10 @@ if (Meteor.isServer) {
 
       FakeVideos.insert({
         title: 'video653',
-        artist: 'artist1',
+        artist: 'artist321',
         genres: ['psychedelic'],
         status: 'APPROVED',
+        approved_date: new Date(),
         keys: { 
           desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
           thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
@@ -102,10 +130,11 @@ if (Meteor.isServer) {
       });
 
       FakeVideos.insert({
-        title: 'video1',
-        artist: 'artist1',
+        title: 'video5215',
+        artist: 'artist6376',
         genres: ['country'],
         status: 'APPROVED',
+        approved_date: new Date(),
         keys: { 
           desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
           thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
@@ -113,10 +142,11 @@ if (Meteor.isServer) {
       });
 
       FakeVideos.insert({
-        title: 'video1',
-        artist: 'artist1',
+        title: 'video02',
+        artist: 'artist213',
         genres: ['hip hop'],
         status: 'APPROVED',
+        approved_date: new Date(),
         keys: { 
           desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
           thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
@@ -124,10 +154,11 @@ if (Meteor.isServer) {
       });
 
       FakeVideos.insert({
-        title: 'video1',
-        artist: 'artist1',
+        title: 'video61',
+        artist: 'artist542',
         genres: ['rock', 'pop'],
         status: 'APPROVED',
+        approved_date: new Date(),
         keys: { 
           desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
           thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
@@ -135,10 +166,11 @@ if (Meteor.isServer) {
       });
 
       FakeVideos.insert({
-        title: 'video2',
-        artist: 'artist2',
+        title: 'video84',
+        artist: 'artist79',
         genres: ['jazz', 'pop'],
         status: 'APPROVED',
+        approved_date: new Date(),
         keys: { 
           desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
           thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
@@ -150,6 +182,7 @@ if (Meteor.isServer) {
         artist: 'artist3',
         genres: ['rock', 'pop', 'edm'],
         status: 'APPROVED',
+        approved_date: new Date(),
         keys: { 
           desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
           thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
@@ -161,6 +194,7 @@ if (Meteor.isServer) {
         artist: 'artist4',
         genres: ['hip hop'],
         status: 'APPROVED',
+        approved_date: new Date(),
         keys: { 
           desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
           thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
@@ -172,6 +206,7 @@ if (Meteor.isServer) {
         artist: 'artist5',
         genres: ['hip hop', 'pop'],
         status: 'APPROVED',
+        approved_date: new Date(),
         keys: { 
           desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
           thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
@@ -183,6 +218,7 @@ if (Meteor.isServer) {
         artist: 'artist6',
         genres: ['indie', 'pop'],
         status: 'APPROVED',
+        approved_date: new Date(),
         keys: { 
           desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
           thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
@@ -190,15 +226,41 @@ if (Meteor.isServer) {
       });
 
       FakeVideos.insert({
-        title: 'video7',
-        artist: 'artist7',
+        title: 'video565',
+        artist: 'artist984',
         genres: ['rock', 'pop'],
         status: 'APPROVED',
+        approved_date: new Date(),
         keys: { 
           desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
           thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
         }
       });
+
+      FakeVideos.insert({
+        title: 'video012',
+        artist: 'artist71',
+        genres: ['psychedelic', 'pop'],
+        status: 'APPROVED',
+        approved_date: new Date(),
+        keys: { 
+          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
+          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+        }
+      });
+
+      FakeVideos.insert({
+        title: 'video73',
+        artist: 'artist67',
+        genres: ['psychedelic', 'rock'],
+        status: 'APPROVED',
+        approved_date: new Date(),
+        keys: { 
+          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
+          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+        }
+      });
+      */
     }
   });
 }

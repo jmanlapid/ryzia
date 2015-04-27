@@ -28,12 +28,18 @@ if (Meteor.isClient) {
       var youtube_id = form['youtube_id'].value;
 
       var genres = [];
+      var genreChecked = false;
       $('#form').find('input[type=checkbox]').each(function () {
         var input = $(this);
         if (input.prop('checked')) {
           genres.push(input.val());
+          genreChecked = true;
         }
       });
+      if (!genreChecked) {
+        $('#form-group-genres').addClass('has-error');
+        return false;
+      }
 
       var metaContext = {
         title: title,
@@ -44,7 +50,7 @@ if (Meteor.isClient) {
 
       var uploader = new Slingshot.Upload('ryzia', metaContext);
       uploaderReference = uploader;      
-      
+            
       Session.set('uploading', true);
       uploader.send(file, function (err, downloadUrl) {
         if (err) {

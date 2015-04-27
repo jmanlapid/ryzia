@@ -8,6 +8,10 @@ if (Meteor.isServer) {
       });
   });
 
+  Meteor.publish('unapproved', function () {
+    return Videos.find({ status: "SUBMITTED"});
+  });
+
   Meteor.methods({
     delete_s3: function (key) {
       var fut = new Future();

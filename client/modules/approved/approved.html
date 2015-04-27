@@ -1,47 +1,102 @@
 <template name="approved">
 	{{> navbar}}
-	<div class="container-fluid">
-		<div id="player_div" class="jumbotron" style="display:none">
+	<div class="container">
+		<div id="player_div" style="display:none">
 			<div class="row">
-			<!--<div class="embed-responsive embed-responsive-16by9">-->
-				<video id="player" class="video-js vjs-default-skin" controls
-						preload="auto" width='350' height='200' poster="" autoplay>
-						<source id="source" src="" type='video/mp4'>
-				</video>
+				<div class="embed-responsive embed-responsive-16by9">
+					<video id="player" class="video-js vjs-default-skin" controls
+							preload="auto" poster="" autoplay>
+							<source id="source" src="" type='video/mp4'>
+					</video>
+				</div>
 			</div>
 			<div class="row">
 				{{#with playing}}
-					<h3>Now Playing</h3>
-					<h4>{{title}}</h4>
-					<h5>by {{artist}}</h5>
+					<h4>{{title}} - {{artist}}</h4>
 					<h5>{{genres}}</h5>
 				{{/with}}
-				{{#with similar}}
-					<h3>Similar Video Queue</h3>
-				{{/with}}
+				{{#if similar}}
+					<h3>Up Next</h3>
+				{{/if}}
+			</div>
+			<div  id="similar" class="row">
 				{{#each similar}}
-					<div class='col-xs-6 col-sm-4 col-md-3 col-lg-3'>
+					<div class='col-xs-6 col-sm-4 col-md-3 col-lg-3' >
 						<a href=""><img src="{{thumbnail_url}}" alt="Thumbnail unavailable." width="192" height="144"></a>
 						<h4>{{title}}</h4>
 						<h5>{{artist}}</h5>
 						<h5>Genres: {{genres}}</h5>
 					</div>
-				{{else}}
-					<h2>No more similar videos!</h2>
 				{{/each}}
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-xs-offset-1 col-sm-offset-2">
+				<form id="sort">
+					<div class="row">
+						<label class="checkbox-inline">
+							<input type="checkbox" value="rock">
+							Rock
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" value="indie">
+							Indie
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" value="metal">
+							Metal
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" value="pop">
+							Pop
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" value="edm">
+							EDM
+						</label>
+						<button id="clear" type="button" class="btn btn-default col-xs-offset-1 col-sm-offset-1">Clear All</button>
+					</div>
+					<br>
+					<div class="row">
+						<label class="checkbox-inline">
+							<input type="checkbox" value="country">
+							Country
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" value="jazz">
+							Jazz
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" value="hip hop">
+							Hip Hop
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" value="r&b">
+							R&B
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" value="psychedelic">
+							Psychedelic
+						</label>
+					</div>
+				</form>
 			</div>
 		</div>
 		<br>
 		<div class="row">
 			<div class="col-sm-offset-1">
-				<h2>Brand Spankin New Videos!</h2>
-				<br>
 				{{#each approved}}
 					<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 						<a href=""><img src="{{thumbnail_url}}" alt="Thumbnail unavailable." width="192" height="144"></a>
 						<h4>{{title}}</h4>
 						<h5>{{artist}}</h5>
 						<p>Genres: {{genres}}</p>
+						<p>Ryzia views: {{views.ryzia}}</p>
+						{{#if views.youtube}}
+							<p>YouTube views: {{views.youtube}}</p>
+						{{/if}}
+						<p>Total views: {{totalViews}}</p>
 					</div>
 				{{else}}
 					<h2 class="h2">Upload and approve a video to play it</h2>

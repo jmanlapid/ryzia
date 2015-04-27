@@ -1,6 +1,7 @@
 if (Meteor.isClient) {
   Session.set('success_message', null);
 
+
   Template.unapproved.events({
     'click .btn-success': function (event, template) {
       var message = this.title + ' by ' + this.artist + ' is now being encoded. An email will be sent to ' + this.email + ' when finished.';

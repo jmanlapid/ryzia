@@ -5,135 +5,139 @@
 	<body>
 		{{> navbar}}
 	  	<div class="container">
-			<h1>Submit Video</h1>
-			<br>
-			<form id="form" class="form-horizontal" method="post" enctype="multipart/form-data">
-				<div class="form-group required">
-					<label for="file" class="col-sm-2 control-label">Video File</label>
-					<div class="col-sm-10">
-						<input type="file" name="file" id="file" accept="video/*" required>
-						<p class="help-block">200MB size upload limit of type .webm .ogv or .mp4</p>
-						{{#if url}}
-							{{> preview}}
+	  		<div class="row">
+	  			<div class="col-xs-offset-1 col-sm-offset-2">
+					<h1>Upload Video</h1>
+					<br>
+					<form id="form" class="form-horizontal" method="post" enctype="multipart/form-data">
+						<div class="form-group required">
+							<label for="file" class="col-sm-2 control-label">Video File</label>
+							<div class="col-sm-6">
+								<input type="file" name="file" id="file" accept="video/*" required>
+								<p class="help-block">200MB size upload limit of type .webm .ogv or .mp4</p>
+								{{#if url}}
+									{{> preview}}
+								{{/if}}
+							</div>
+						</div>
+						<div class="form-group required">
+							<label for="title" class="col-sm-2 control-label">Video Title</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="title" id="title" placeholder="Brain Stew" required>
+							</div>
+						</div>
+						<div class="form-group required">
+							<label for="artist" class="col-sm-2 control-label">Artist Name</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="artist" id="artist" placeholder="Green Day" required>
+							</div>
+						</div>
+						<div class="form-group required">
+							<label for="email" class="col-sm-2 control-label">Email</label>
+							<div class="col-sm-6">
+								<input type="email" class="form-control" name="email" id="email" placeholder="greenday@example.com" required>
+							</div>
+						</div>
+						<div class="form-group required" id="form-group-genres">
+							<label for="genres" class="col-sm-2 control-label">Genres</label>
+							<p class="help-block col-sm-6">Check all that apply, enables forever stream for viewers that want to discover similar music</p>
+							<div class="col-sm-offset-3 col-sm-2">
+								<div class="checkbox">
+		  							<label>
+		    							<input type="checkbox" value="rock">
+		    							Rock
+		  							</label>
+								</div>
+								<div class="checkbox">
+		  							<label>
+		    							<input type="checkbox" value="indie">
+		    							Indie
+		  							</label>
+								</div>
+								<div class="checkbox">
+		  							<label>
+		    							<input type="checkbox" value="metal">
+		    							Metal
+		  							</label>
+								</div>
+								<div class="checkbox">
+		  							<label>
+		    							<input type="checkbox" value="pop">
+		    							Pop
+		  							</label>
+								</div>
+								<div class="checkbox">
+		  							<label>
+		    							<input type="checkbox" value="edm">
+		    							EDM
+		  							</label>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="checkbox">
+		  							<label>
+		    							<input type="checkbox" value="country">
+		    							Country
+		  							</label>
+								</div>
+								<div class="checkbox">
+		  							<label>
+		    							<input type="checkbox" value="jazz">
+		    							Jazz
+		  							</label>
+								</div>
+								<div class="checkbox">
+		  							<label>
+		    							<input type="checkbox" value="hip hop">
+		    							Hip Hop
+		  							</label>
+								</div>
+								<div class="checkbox">
+		  							<label>
+		    							<input type="checkbox" value="r&b">
+		    							R&B
+		  							</label>
+								</div>
+								<div class="checkbox">
+		  							<label>
+		    							<input type="checkbox" value="psychedelic">
+		    							Psychedelic
+		  							</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="genres" class="col-sm-2 control-label">YouTube Video ID</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="youtube_id" id="youtube_id" placeholder="cb8qk0cVTos">
+								<p class="help-block">https://www.youtube.com/watch?v=cb8qk0cVTos, this will help us establish how popular your video is</p>
+							</div>
+						</div> 
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-6">
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</div>
+						</div>
+					</form>
+					{{#if uploading}}
+						{{> progressBar}}
+					{{/if}}
+					<div class="row">
+						<h3></h3>
+						{{#if uploadSuccess}}
+							<div class="alert alert-success" role="alert">
+							<strong>Upload Successful! </strong>
+							Your video will be reviewed shortly. If it is approved it will be publicy viewable otherwise it is deleted. You will be notified through email either way.
+							</div>
+						{{/if}}
+						{{#if uploadFailure}}
+							<div class="alert alert-danger" role="alert">
+								<strong>Upload Failed! </strong>
+								Your upload failed! Please try again and make sure you have a stable internet connection.
+							</div>
 						{{/if}}
 					</div>
 				</div>
-				<div class="form-group required">
-					<label for="title" class="col-sm-2 control-label">Video Title</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" name="title" id="title" placeholder="Brain Stew" required>
-					</div>
-				</div>
-				<div class="form-group required">
-					<label for="artist" class="col-sm-2 control-label">Artist Name</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" name="artist" id="artist" placeholder="Green Day" required>
-					</div>
-				</div>
-				<div class="form-group required">
-					<label for="email" class="col-sm-2 control-label">Email</label>
-					<div class="col-sm-10">
-						<input type="email" class="form-control" name="email" id="email" placeholder="greenday@example.com" required>
-					</div>
-				</div>
-				<div class="form-group required">
-					<label for="genres" class="col-sm-2 control-label">Genres</label>
-					<p class="help-block col-sm-10">Check all that apply, enables forever stream for viewers that want to discover similar music</p>
-					<div class="col-sm-offset-3 col-sm-2">
-						<div class="checkbox">
-  							<label>
-    							<input type="checkbox" value="rock">
-    							Rock
-  							</label>
-						</div>
-						<div class="checkbox">
-  							<label>
-    							<input type="checkbox" value="indie">
-    							Indie
-  							</label>
-						</div>
-						<div class="checkbox">
-  							<label>
-    							<input type="checkbox" value="metal">
-    							Metal
-  							</label>
-						</div>
-						<div class="checkbox">
-  							<label>
-    							<input type="checkbox" value="pop">
-    							Pop
-  							</label>
-						</div>
-						<div class="checkbox">
-  							<label>
-    							<input type="checkbox" value="edm">
-    							EDM
-  							</label>
-						</div>
-					</div>
-					<div class="col-sm-2">
-						<div class="checkbox">
-  							<label>
-    							<input type="checkbox" value="country">
-    							Country
-  							</label>
-						</div>
-						<div class="checkbox">
-  							<label>
-    							<input type="checkbox" value="jazz">
-    							Jazz
-  							</label>
-						</div>
-						<div class="checkbox">
-  							<label>
-    							<input type="checkbox" value="hip hop">
-    							Hip Hop
-  							</label>
-						</div>
-						<div class="checkbox">
-  							<label>
-    							<input type="checkbox" value="r&b">
-    							R&B
-  							</label>
-						</div>
-						<div class="checkbox">
-  							<label>
-    							<input type="checkbox" value="psychedelic">
-    							Psychedelic
-  							</label>
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="genres" class="col-sm-2 control-label">YouTube Video ID</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" name="youtube_id" id="youtube_id" placeholder="cb8qk0cVTos">
-						<p class="help-block">https://www.youtube.com/watch?v=cb8qk0cVTos</p>
-					</div>
-				</div> 
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-primary">Submit</button>
-					</div>
-				</div>
-			</form>
-			{{#if uploading}}
-				{{> progressBar}}
-			{{/if}}
-			<div class="row">
-				<h3></h3>
-				{{#if uploadSuccess}}
-					<div class="alert alert-success" role="alert">
-					<strong>Upload Successful! </strong>
-					Your video is being reviewed. If it is approved it will be publicy viewable otherwise it is deleted. You will receive an email either way.
-					</div>
-				{{/if}}
-				{{#if uploadFailure}}
-					<div class="alert alert-danger" role="alert">
-						<strong>Upload Failed! </strong>
-						Your upload failed! Please try again and make sure you have a stable internet connection.
-					</div>
-				{{/if}}
 			</div>
 	  	</div>
 	</body>

@@ -5,7 +5,7 @@ if (Meteor.isServer) {
   });
 
   Meteor.methods({
-    getYouTubeDetails_: function (id) {
+    getYouTubeDetails_: function (ids) {
       Future = Npm.require('fibers/future');
       var fut = new Future();
       var params = {
@@ -22,11 +22,12 @@ if (Meteor.isServer) {
       }));
       return fut.wait();
     },
-    getYouTubeDetails: function (id) {
+    //if more than one id, separate by comma (,) and no spaces
+    getYouTubeDetails: function (ids) {
       var params = {
         key: 'AIzaSyAaq6keItnvEGtKcV5mvGH1D9QhT2Rw38U',
         part: 'contentDetails, statistics',
-        id: id
+        id: ids
       }
       return HTTP.call('GET', 'https://www.googleapis.com/youtube/v3/videos', {params: params});
     }
