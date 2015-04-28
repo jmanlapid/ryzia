@@ -2,15 +2,18 @@ if (Meteor.isServer) {
   SyncedCron.add({
     name: 'Updating YouTube views from all APPROVED videos with a youtube_id',
     schedule: function(parser) {
-      // parser is a later.parse object
-      return parser.text('every 15 minutes');
+      return parser.text('every 30 minutes');
     },
     job: function() {
       var ids = [];
-      Videos.find({ status: "APPROVED", youtube_id: { $exists: true }})
-      .forEach(function (vid) {
-        ids.push(vid.youtube_id);
-      });
+      var vids = Videos.find({ status: "APPROVED", youtube_id: { $exists: true }});
+      if (vids.count > 0) {
+        vids.forEach(function (vid) {
+          ids.push(vid.youtube_id);
+        });
+      } else {
+        return;
+      }
       try {
         var result = Meteor.call('getYouTubeDetails', ids.join());
         if (result.statusCode === 200 && result.data.items.length > 0) {
