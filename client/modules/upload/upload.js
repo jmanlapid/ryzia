@@ -2,6 +2,40 @@ if (Meteor.isClient) {
   var uploaderReference = new Slingshot.Upload('init');
   
   Template.upload.events({
+    'click #terms-link': function (e) {
+      bootbox.dialog({
+        message: 'Please read the following carefully before submitting your music video to Ryzia.' +
+                  '<hr>' +
+                  '<ol>' +
+                    '<li>I am the original artist in the music video or an extension of the artist of which I was given permission to upload it on Ryzia.</li>' +
+                    '<li>I am uploading a music video that is not violating any copyrights and has completely original content.</li>' +
+                    '<li>I understand that Ryzia is not responsible for confidentiality within content of a submitted music video.</li>' +
+                    '<li>I understand that Ryzia reserves the right to privately view the submitted music video for purposes of curating its originality, content, and quality before making it publicly viewable on the platform.</li>' +
+                    '<li>I understand that Ryzia reserves the right to deny and delete a submitted music video submission based on any reason whatsoever such as to prevent it from being publicly viewable on the platform.</li>' +
+                    '<li>I give Ryzia permission to save my email address in a secure database. Ryzia will not publicly display your email address without your permission.</li>' +
+                    '<li>I give Ryzia permission to message the email address I have provided.</li>' +
+                    '<li>I understand that Ryzia may remove my approved music video without notifiying me.</li>' +
+                    '<li>I give Ryzia permission to publicy display my approved music video.</li>'+ 
+                  '</ol>',
+        buttons: {
+          agree: {
+            label: "Agree",
+            className: "btn-success",
+            callback: function() {
+              $('#terms-checkbox').prop('checked', true);
+              return;
+            }
+          },
+          close: {
+            label: "Close",
+            className: "btn-default",
+            callback: function() {
+              return;
+            }
+          },
+        }
+      });
+    },
     'change #file': function (e) {
       var URL = window.URL || window.webkitURL;
       var file = document.getElementById('file').files[0];
@@ -41,6 +75,11 @@ if (Meteor.isClient) {
         return false;
       }
 
+      if (!$('#terms-checkbox').prop('checked')) {
+        $('#form-group-terms').addClass('has-error');
+        return false;
+      }
+
       var metaContext = {
         title: title,
         artist: artist,
@@ -49,8 +88,8 @@ if (Meteor.isClient) {
       };
 
       var uploader = new Slingshot.Upload('ryzia', metaContext);
-      uploaderReference = uploader;      
-            
+      uploaderReference = uploader;
+      
       Session.set('uploading', true);
       uploader.send(file, function (err, downloadUrl) {
         if (err) {
@@ -63,7 +102,6 @@ if (Meteor.isClient) {
           Session.set('uploading', false);
         }
       });
-
       return false;
     }
 

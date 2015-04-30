@@ -9,7 +9,7 @@ if (Meteor.isServer) {
   });
 
   Meteor.publish('unapproved', function () {
-    return Videos.find({ status: "SUBMITTED"});
+    return Videos.find({ status: "SUBMITTED" });
   });
 
   Meteor.methods({

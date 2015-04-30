@@ -1,0 +1,38 @@
+<template name="navbar"> 
+	<nav class="navbar navbar-inverse navbar-static-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">Ryzia</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/approved">Approved</a></li>
+					<li><a href="/upload">Upload</a></li>
+					<li><a href="/about">About</a></li>
+				</ul>
+				{{#if isInRole "admin"}}
+            	<ul class="nav navbar-nav navbar-right">
+            		<li><a href="/unapproved">Unapproved <span class="badge">{{getPublishedCount 'count'}}</span></a></li>
+            		<li><button id="logout" type="button" class="btn btn-warning navbar-btn btn-sm">Log Out</button></li>
+            	</ul>
+                {{else}}
+					<form id="login" class="nav navbar-form navbar-right" role="loggedOut">
+		                <div class="form-group form-nav">
+		                    <input id='login-email' type="text" class="form-control input-sm" name="username" placeholder="Admin Email">
+		                </div>
+		                <div class="form-group form-nav">
+		                    <input id='login-password' type="password" class="form-control input-sm" name="password" placeholder="Password">
+		                </div>
+		                <button type="submit" class="btn btn-primary btn-sm">Sign In</button>
+	                </form>
+                {{/if}}
+			</div>
+		</div>
+	</nav>
+</template>

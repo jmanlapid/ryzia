@@ -107,12 +107,22 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="genres" class="col-sm-2 control-label">YouTube Video ID</label>
+							<label for="genres" class="col-sm-2 control-label">YouTube Vid ID</label>
 							<div class="col-sm-6">
 								<input type="text" class="form-control" name="youtube_id" id="youtube_id" placeholder="cb8qk0cVTos">
-								<p class="help-block">https://www.youtube.com/watch?v=cb8qk0cVTos, this will help us establish how popular your video is</p>
+								<p class="help-block">(Optional) This will help us establish how popular your video is. Find the ID to your video by going to it on YouTube and copy the following in bold.</p>
+								<p class="help-block">www.youtube.com/watch?v=<strong>cb8qk0cVTos</strong></p>
 							</div>
-						</div> 
+						</div>
+					    <div id="form-group-terms" class="form-group required">
+					    	<label></label>
+					        <div class="col-sm-offset-2 col-sm-6">
+					            <label class="checkbox-inline">
+					                <input id="terms-checkbox" type="checkbox" value="agree">  I agree to the <a href="#" id="terms-link">Terms and Conditions</a>.
+					            </label>
+					        </div>
+					    </div>
+					    <br>
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-6">
 								<button type="submit" class="btn btn-primary">Submit</button>
