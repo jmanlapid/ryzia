@@ -35,7 +35,51 @@ if (Meteor.isClient) {
         $('#player_div').slideUp(1000);
       }
     },
+    'click .btn-group a': function (event, template) {
+      sort.clear();
+      var $btn = $(event.currentTarget);
 
+      if ($btn.hasClass('btn-default')) {
+        $btn
+        .removeClass('btn-default')
+        .addClass('btn-success active');
+      } else {
+        $btn
+        .removeClass('btn-success active')
+        .addClass('btn-default');
+      }
+
+      $('a[role="genre"]').each(function () {
+        var input = $(this);
+        if (input.hasClass('active'))
+          sort.push(input.data('genre'));
+      });
+      event.preventDefault();
+      return false;
+    },
+
+    'click #clear': function (event, template) {
+      sort.clear();
+      $('#sort').find('input[type=checkbox]').each(function () {
+        var input = $(this);
+        input.prop('checked', false);
+      });
+    }
+  });
+
+  Template.approved.helpers({
+    'playing': function () {
+      return Session.get('playing');
+    },
+    'similar': function () {
+      return similar.list().slice(0, 3);
+    },
+    'thumbnail_url': function () {
+      return CLIENT_SETTINGS.CLOUDFRONT_URL + this.keys.thumbnail;
+    },
+  });
+
+  Template.videoList.events({
     'click img': function (event, template) {
       var self = this;
       var genres = this.genres;
@@ -43,7 +87,7 @@ if (Meteor.isClient) {
       played = [];
       similar.clear();
 
-      //add all similar videos, minus the current video to similar
+      //add all similar videos, minus the currenst video to similar
       Videos.find(
         { genres: { $in: genres },
           _id: { $ne: self._id}
@@ -61,30 +105,15 @@ if (Meteor.isClient) {
 
       //add the current playing video to played
       played.push(this._id);
-    },
-
-    'click input': function (event, template) {
-      sort.clear();
-      $('#sort').find('input[type=checkbox]').each(function () {
-        var input = $(this);
-        if (input.prop('checked')) {
-          sort.push(input.val());
-        }
-      });
-    },
-
-    'click #clear': function (event, template) {
-      sort.clear();
-      $('#sort').find('input[type=checkbox]').each(function () {
-        var input = $(this);
-        input.prop('checked', false);
-      });
     }
   });
 
-  Template.approved.helpers({
+  Template.videoList.helpers({
     'sort': function () {
       return sort;
+    },
+    'thumbnail_url': function () {
+      return CLIENT_SETTINGS.CLOUDFRONT_URL + this.keys.thumbnail;
     },
     'approved': function () {
       var sortArr = sort.array();
@@ -92,15 +121,6 @@ if (Meteor.isClient) {
         return Videos.find({genres: { $in: sortArr }});
       else
         return Videos.find({});
-    },
-    'thumbnail_url': function () {
-      return CLIENT_SETTINGS.CLOUDFRONT_URL + this.keys.thumbnail;
-    },
-    'playing': function () {
-      return Session.get('playing');
-    },
-    'similar': function () {
-      return similar.list().slice(0, 3);
     },
     'totalViews': function () {
       var total = 0;
@@ -110,15 +130,4 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.approved.render = function () {
-    Meteor.defer (function () {
-      document.getElementById("similar")._uihooks = {
-        removeElement: function (node) {
-        },
-        insertElement: function (node) {
-          return false;
-        }
-      }
-    });
-  }
 }

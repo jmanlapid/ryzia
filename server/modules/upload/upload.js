@@ -10,8 +10,8 @@ if (Meteor.isServer) {
         GLOBAL_KEY = Meteor.settings.AWS.UNENCODED_PREFIX + '/' + utils.formatS3(metaContext.artist) + '-' + utils.formatS3(metaContext.title) + '-' + file.name;
         return GLOBAL_KEY;
       },
-      maxSize: 200 * 1024 * 1024,
-      allowedFileTypes: ['video/mp4', 'video/webm', 'video/ogg'],
+      maxSize: 500 * 1024 * 1024,
+      allowedFileTypes: ['video/mp4', 'video/webm', 'video/ogg', 'video/wmv'],
       authorize: function() {
         return true;
       }

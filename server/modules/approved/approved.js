@@ -5,7 +5,6 @@ if (Meteor.isServer) {
   });
 
   Meteor.publish('sort', function (genres) {
-    console.log('sort');
     return Videos.find({genres: { $in: genres}});
   });
 

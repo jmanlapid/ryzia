@@ -10,8 +10,8 @@ if (Meteor.isServer) {
         youtube_id: 'nhX4rQ79C1A',
         approved_date: new Date(),
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         },
         views: {
           ryzia: 90
@@ -26,8 +26,8 @@ if (Meteor.isServer) {
         youtube_id: 'TbGu4mxZDY8',
         approved_date: new Date(),
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         },
         views: {
           ryzia: 15
@@ -42,8 +42,8 @@ if (Meteor.isServer) {
         youtube_id: 'GELJIgoBwbU',
         approved_date: new Date(),
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         },
         views: {
           ryzia: 12
@@ -60,8 +60,8 @@ if (Meteor.isServer) {
           ryzia: 3
         },
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         }
       });
 
@@ -75,21 +75,23 @@ if (Meteor.isServer) {
           ryzia: 1
         },
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         }
       });
 
-/*
       FakeVideos.insert({
         title: 'video532',
         artist: 'artist522',
         genres: ['edm'],
         status: 'APPROVED',
         approved_date: new Date(),
+        views: {
+          ryzia: 1
+        },
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         }
       });
 
@@ -99,9 +101,12 @@ if (Meteor.isServer) {
         genres: ['r&b'],
         status: 'APPROVED',
         approved_date: new Date(),
+        views: {
+          ryzia: 1
+        },
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         }
       });
 
@@ -111,9 +116,12 @@ if (Meteor.isServer) {
         genres: ['hip hop'],
         status: 'APPROVED',
         approved_date: new Date(),
+        views: {
+          ryzia: 1
+        },        
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         }
       });
 
@@ -123,9 +131,12 @@ if (Meteor.isServer) {
         genres: ['psychedelic'],
         status: 'APPROVED',
         approved_date: new Date(),
+        views: {
+          ryzia: 1
+        },        
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         }
       });
 
@@ -135,9 +146,12 @@ if (Meteor.isServer) {
         genres: ['country'],
         status: 'APPROVED',
         approved_date: new Date(),
+        views: {
+          ryzia: 1
+        },        
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         }
       });
 
@@ -147,9 +161,12 @@ if (Meteor.isServer) {
         genres: ['hip hop'],
         status: 'APPROVED',
         approved_date: new Date(),
+        views: {
+          ryzia: 1
+        },        
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         }
       });
 
@@ -159,9 +176,12 @@ if (Meteor.isServer) {
         genres: ['rock', 'pop'],
         status: 'APPROVED',
         approved_date: new Date(),
+        views: {
+          ryzia: 1
+        },        
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         }
       });
 
@@ -171,9 +191,12 @@ if (Meteor.isServer) {
         genres: ['jazz', 'pop'],
         status: 'APPROVED',
         approved_date: new Date(),
+        views: {
+          ryzia: 1
+        },        
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         }
       });
 
@@ -183,9 +206,12 @@ if (Meteor.isServer) {
         genres: ['rock', 'pop', 'edm'],
         status: 'APPROVED',
         approved_date: new Date(),
+        views: {
+          ryzia: 1
+        },        
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         }
       });
 
@@ -195,9 +221,12 @@ if (Meteor.isServer) {
         genres: ['hip hop'],
         status: 'APPROVED',
         approved_date: new Date(),
+        views: {
+          ryzia: 1
+        },        
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         }
       });
 
@@ -207,9 +236,12 @@ if (Meteor.isServer) {
         genres: ['hip hop', 'pop'],
         status: 'APPROVED',
         approved_date: new Date(),
+        views: {
+          ryzia: 1
+        },        
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         }
       });
 
@@ -219,12 +251,15 @@ if (Meteor.isServer) {
         genres: ['indie', 'pop'],
         status: 'APPROVED',
         approved_date: new Date(),
+        views: {
+          ryzia: 1
+        },
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         }
       });
-
+      /*
       FakeVideos.insert({
         title: 'video565',
         artist: 'artist984',
@@ -232,8 +267,8 @@ if (Meteor.isServer) {
         status: 'APPROVED',
         approved_date: new Date(),
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         }
       });
 
@@ -244,8 +279,8 @@ if (Meteor.isServer) {
         status: 'APPROVED',
         approved_date: new Date(),
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         }
       });
 
@@ -256,11 +291,11 @@ if (Meteor.isServer) {
         status: 'APPROVED',
         approved_date: new Date(),
         keys: { 
-          desktop: 'encoded/britney-sam/brinny-brinny/desktop.mp4',
-          thumbnail:'encoded/britney-sam/brinny-brinny/thumb-00001.png'
+          desktop: 'encoded/u2/every-breaking-wave/desktop.mp4',
+          thumbnail:'encoded/u2/every-breaking-wave/thumb-00005.png'
         }
       });
-      */
+  */
     }
   });
 }

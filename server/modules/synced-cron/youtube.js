@@ -7,13 +7,12 @@ if (Meteor.isServer) {
     job: function() {
       var ids = [];
       var vids = Videos.find({ status: "APPROVED", youtube_id: { $exists: true }});
-      if (vids.count > 0) {
+      if (vids.count() > 0)
         vids.forEach(function (vid) {
           ids.push(vid.youtube_id);
         });
-      } else {
+      else
         return;
-      }
       try {
         var result = Meteor.call('getYouTubeDetails', ids.join());
         if (result.statusCode === 200 && result.data.items.length > 0) {

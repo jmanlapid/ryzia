@@ -1,0 +1,9 @@
+.span-genres {
+	float: right;
+	display: inline-block;
+}
+
+.img-expand {
+	min-height: 100%;
+	width: auto;
+}

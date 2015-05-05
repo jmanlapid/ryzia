@@ -32,76 +32,45 @@
 		</div>
 		<hr>
 		<div class="row">
-			<div class="col-xs-offset-1 col-sm-offset-2">
-				<form id="sort">
-					<div class="row">
-						<label class="checkbox-inline">
-							<input type="checkbox" value="rock">
-							Rock
-						</label>
-						<label class="checkbox-inline">
-							<input type="checkbox" value="indie">
-							Indie
-						</label>
-						<label class="checkbox-inline">
-							<input type="checkbox" value="metal">
-							Metal
-						</label>
-						<label class="checkbox-inline">
-							<input type="checkbox" value="pop">
-							Pop
-						</label>
-						<label class="checkbox-inline">
-							<input type="checkbox" value="edm">
-							EDM
-						</label>
-						<button id="clear" type="button" class="btn btn-default col-xs-offset-1 col-sm-offset-1">Clear All</button>
-					</div>
-					<br>
-					<div class="row">
-						<label class="checkbox-inline">
-							<input type="checkbox" value="country">
-							Country
-						</label>
-						<label class="checkbox-inline">
-							<input type="checkbox" value="jazz">
-							Jazz
-						</label>
-						<label class="checkbox-inline">
-							<input type="checkbox" value="hip hop">
-							Hip Hop
-						</label>
-						<label class="checkbox-inline">
-							<input type="checkbox" value="r&b">
-							R&B
-						</label>
-						<label class="checkbox-inline">
-							<input type="checkbox" value="psychedelic">
-							Psychedelic
-						</label>
-					</div>
-				</form>
-			</div>
+			{{> sortGenres}}
 		</div>
 		<br>
 		<div class="row">
-			<div class="col-sm-offset-1">
-				{{#each approved}}
-					<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-						<a href=""><img src="{{thumbnail_url}}" alt="Thumbnail unavailable." width="192" height="144"></a>
-						<h4>{{title}}</h4>
-						<h5>{{artist}}</h5>
-						<p>Genres: {{genres}}</p>
-						<p>Ryzia views: {{views.ryzia}}</p>
-						{{#if views.youtube}}
-							<p>YouTube views: {{views.youtube}}</p>
-						{{/if}}
-						<p>Total views: {{totalViews}}</p>
-					</div>
-				{{else}}
-					<h2 class="h2">Upload and approve a video to play it</h2>
-				{{/each}}
-			</div>
+			{{> videoList}}
 		</div>
 	</div>
+</template>
+
+<template name="sortGenres">
+	<div class="btn-group btn-group-justified" role="group">
+		<a href="#" data-genre="rock" class="btn btn-default" role="genre">Rock</a>
+		<a href="#" data-genre="indie" class="btn btn-default" role="genre">Indie</a>
+		<a href="#" data-genre="metal" class="btn btn-default" role="genre">Metal</a>
+		<a href="#" data-genre="pop" class="btn btn-default" role="genre">Pop</a>
+		<a href="#" data-genre="edm" class="btn btn-default" role="genre">EDM</a>
+	</div>
+	<div class="btn-group btn-group-justified" role="group">
+		<a href="#" data-genre="country" class="btn btn-default" role="genre">Country</a>
+		<a href="#" data-genre="jazz" class="btn btn-default" role="genre">Jazz</a>
+		<a href="#" data-genre="hip hop" class="btn btn-default" role="genre">Hip Hop</a>
+		<a href="#" data-genre="r&b" class="btn btn-default" role="genre">R&B</a>
+		<a href="#" data-genre="psychedelic" class="btn btn-default" role="genre">Psychedelic</a>
+	</div>
+</template>
+
+<template name="videoList">
+	{{#each approved}}
+		<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+			<div class="center-block">
+				<a href=""><img class="img-responsive" src="{{thumbnail_url}}" alt="Thumbnail unavailable."></a>
+				<h6><strong>{{title}}</strong></h6>
+				<h6>{{artist}}</h6>
+				<h6><span class="fa fa-eye"></span> {{totalViews}}</h6>
+				<!--span class="span-genres">{{genres}}</span-->
+			</div>
+			<br>
+		</div>
+	{{else}}
+		<h2 class="h2">Upload and approve a video to play it</h2>
+	{{/each}}
 </template>

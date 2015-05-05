@@ -63,7 +63,7 @@ if (Meteor.isClient) {
 
       var genres = [];
       var genreChecked = false;
-      $('#form').find('input[type=checkbox]').each(function () {
+      $('#form').find('input[name=genre]').each(function () {
         var input = $(this);
         if (input.prop('checked')) {
           genres.push(input.val());
@@ -89,7 +89,6 @@ if (Meteor.isClient) {
 
       var uploader = new Slingshot.Upload('ryzia', metaContext);
       uploaderReference = uploader;
-      
       Session.set('uploading', true);
       uploader.send(file, function (err, downloadUrl) {
         if (err) {

@@ -1,0 +1,20 @@
+{
+	"ADMIN": {
+		"PASSWORD": "monkeyparadise"
+	},
+	"AWS": {		
+		"ACCESS_ID": "AKIAIGWISXV63DDSCL3A",
+		"ACCESS_KEY": "8gcZHG9QhSAbTYSgFhGhJsqa1d4M9asdi7yE4GnX",
+		"BUCKET_NAME": "ryzia-test",
+		"UNENCODED_PREFIX": "unencoded",
+		"ENCODED_PREFIX": "encoded",
+		"PIPELINE_ID": "1428372591181-jzo86z",
+		"PRESET_ID": "1430590781802-qcnj4x"
+	},
+	"SMTP": {
+		"USERNAME": "AKIAIDNTC2RV6OGH4ZKA",
+		"PASSWORD": "AsgtUoACkOGzJiuUgwS+8Z4zLMmIc+OSxivRZCR/ZL7p"
+	},
+	"MONGO_URL": "mongodb://jmanlapid:pop0870107731@ds061741.mongolab.com:61741/ryzia-test" 
+}
+ 

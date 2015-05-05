@@ -17,8 +17,8 @@ if (Meteor.isServer) {
       var outputKeyPrefix = jobDetails.outputKeyPrefix;
       var desktopKey = outputKeyPrefix + 'desktop.mp4';
       var thumbnailKey = outputKeyPrefix + 'thumb-00001.png';
-
       var videoObj = Videos.findOne({ jobId: jobId });
+      Meteor.call('delete_s3', videoObj.keys.unencoded);
       Videos.update(
         videoObj, 
         {
@@ -36,7 +36,6 @@ if (Meteor.isServer) {
           }
         }
       );
-      Meteor.call('delete_s3', videoObj.keys.unencoded);
       Meteor.call('email_approved', videoObj);
     }
   });
