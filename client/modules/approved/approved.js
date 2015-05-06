@@ -8,8 +8,8 @@ if (Meteor.isClient) {
   ApprovedProto = {
     playVideo: function (videoObj) {
       Session.set('playing', videoObj);
-      var video_url = CLIENT_SETTINGS.CLOUDFRONT_URL + videoObj.keys.desktop;
-      var video_thumb = CLIENT_SETTINGS.CLOUDFRONT_URL + videoObj.keys.thumbnail;
+      var video_url = Meteor.settings.public.CLOUDFRONT_URL + videoObj.keys.desktop;
+      var video_thumb = Meteor.settings.public.CLOUDFRONT_URL + videoObj.keys.thumbnail;
       var player = document.getElementById('player');
       var source = document.getElementById('source');
       
@@ -75,7 +75,7 @@ if (Meteor.isClient) {
       return similar.list().slice(0, 3);
     },
     'thumbnail_url': function () {
-      return CLIENT_SETTINGS.CLOUDFRONT_URL + this.keys.thumbnail;
+      return Meteor.settings.public.CLOUDFRONT_URL + this.keys.thumbnail;
     },
   });
 
@@ -113,7 +113,7 @@ if (Meteor.isClient) {
       return sort;
     },
     'thumbnail_url': function () {
-      return CLIENT_SETTINGS.CLOUDFRONT_URL + this.keys.thumbnail;
+      return Meteor.settings.public.CLOUDFRONT_URL + this.keys.thumbnail;
     },
     'approved': function () {
       var sortArr = sort.array();

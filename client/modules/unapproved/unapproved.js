@@ -49,7 +49,7 @@ if (Meteor.isClient) {
       return Videos.find({status: 'SUBMITTED'});
     },
     stream_url: function () {
-      return 'http://d1mzh3upct8ych.cloudfront.net/' + this.keys.unencoded;
+      return Meteor.settings.public.CLOUDFRONT_URL + this.keys.unencoded;
     }
   });
 

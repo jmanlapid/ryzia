@@ -7,7 +7,7 @@ if (Meteor.isServer) {
     job: function() {
       var ids = [];
       var vids = Videos.find({ status: "APPROVED", youtube_id: { $exists: true }});
-      if (vids.count() > 0)
+      if (vids && vids.count() > 0)
         vids.forEach(function (vid) {
           ids.push(vid.youtube_id);
         });
