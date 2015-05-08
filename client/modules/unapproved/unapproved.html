@@ -3,7 +3,7 @@
 		{{> navbar}}
 		<div class="container" id="unapproved_videos">
 			<div class="row">
-				<div class="col-sm-offset-2 col-sm-6">
+				<div class="col-sm-offset-2 col-xs-16 col-sm-16">
 					<h1 class="h1">Fresh New Videos</h1>
 					<p>If your browser is unable to play a video for whatever reason:</p>
 					<ol>
@@ -18,20 +18,19 @@
 			{{#each unapproved_videos}}
 				<div>
 					<div class="row">
-						<div class="col-sm-offset-2 col-sm-6">
+						<div class="col-xs-16 col-sm-16">
 							<h3>{{title}} by {{artist}}</h3>
 							<div class="embed-responsive embed-responsive-16by9">
-								<video
-								controls preload="auto"
-								poster="">
+								<video controls preload="auto">
 									<source src="{{stream_url}}" type='video/mp4' />
-									<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+									<p>This shit can't play yo</p>
 								</video>
 							</div>
 						</div>
 					</div>
+					<br>
 					<div class="row">
-						<div class="col-sm-offset-2 col-sm-6 approve_deny">
+						<div class="col-xs-offset-1 col-xs-16 col-sm-16 approve_deny">
 							{{#if youtube_id}}
 								<a href="http://youtube.com/watch?v={{youtube_id}}" target="_blank"><button class="btn btn-primary">Check YouTube Link</button></a>
 							{{/if}}
@@ -53,10 +52,10 @@
 
 <template name="deny_confirmation">
 	<div class="deny_confirmation" style="display:none">
-		<h3 class="col-sm-offset-1 col-sm-10">Deny Confirmation</h3>
+		<h3 class="col-xs-offset-1 col-sm-offset-1 col-xs-10 col-sm-10">Deny Confirmation</h3>
 		<form class="form-horizontal">
 			<div class="form-group">
-				<div class="col-sm-offset-1 col-sm-10">
+				<div class="col-xs-offset-1 col-sm-offset-1 col-xs-10 col-sm-10">
 					<label for="reason" class="control-label">Reason(s)</label>
 				    <div class="checkbox">
 				     	<label><input type="checkbox" value="Low quality">Low quality</label>
@@ -78,13 +77,13 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-offset-1 col-sm-10">
+				<div class="col-sm-offset-1 col-xs-offset-1 col-xs-10 col-sm-10">
 					<label for="comments" class="control-label">Comments</label>
 					<textarea class="form-control" rows="2" name="comments"></textarea>
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-offset-1 col-sm-10">
+				<div class="col-xs-offset-1 col-sm-offset-1 col-sm-10">
 					<button class="btn btn-danger">Delete Video and Send Email</button>
 					<button class="btn btn-default">Cancel</button>
 				</div>

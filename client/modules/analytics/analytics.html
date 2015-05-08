@@ -1,0 +1,71 @@
+<template name="analytics">
+	{{> navbar}}
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<form class="input-group">
+					<span class="input-group-addon">
+						<span class="fa fa-search"></span>
+					</span>
+					<input type="text" class="form-control" id="search-box" placeholder="Otherworld - Quiet Luke">
+				</form>
+			</div>
+		</div>
+		<br>
+		<div class="row" id="video-details" style="display:none">
+			<div class="map-container">
+				{{> googleMap name="exampleMap" options=exampleMapOptions}}
+			</div>
+			<br>
+			<div class="col-sm-8">
+				{{#with videoDetails}}
+					<table class="table table-bordered table-hover table-condensed">
+						<tbody>
+							<tr>
+								<th scope="row">
+									Title
+								</th>
+								<td>
+									{{title}}
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									Artist
+								</th>
+								<td>
+									{{artist}}
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									Ryzia Views
+								</th>
+								<td>
+									{{views.ryzia}}
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									YouTube Views
+								</th>
+								<td>
+									{{views.youtube}}
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				{{/with}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<ul class="list-unstyled">
+					{{#each getVideos}}
+						<a href='#'><h4>{{{title}}} - {{{artist}}}</h4></a>
+					{{/each}}
+				</ul>
+			</div>
+		</div>
+	</div>
+</template>

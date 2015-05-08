@@ -4,7 +4,7 @@ if (Meteor.isServer) {
     //if more than one id, separate by comma (,) and no spaces
     getYouTubeDetails: function (ids) {
       var params = {
-        key: Meteor.settings.GOOGLE_API_KEY,
+        key: Meteor.settings.public.GOOGLE_API_KEY,
         part: 'contentDetails, statistics',
         id: ids
       }

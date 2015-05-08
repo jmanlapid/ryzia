@@ -10,11 +10,11 @@
 					<h1>Upload Video</h1>
 					<br>
 					<form id="form" class="form-horizontal" method="post" enctype="multipart/form-data">
-						<div class="form-group required">
+						<div class="form-group required" id="form-group-file">
 							<label for="file" class="col-sm-2 control-label">Video File</label>
 							<div class="col-sm-6">
 								<input type="file" name="file" id="file" accept="video/*" required>
-								<p class="help-block">500MB size upload limit of type .webm .ogv or .mp4</p>
+								<p class="help-block">500MB size upload limit of any video type</p>
 								{{#if url}}
 									{{> preview}}
 								{{/if}}

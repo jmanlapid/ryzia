@@ -41,11 +41,25 @@ if (Meteor.isClient) {
       var file = document.getElementById('file').files[0];
       var type = file.type;
       var fileURL = URL.createObjectURL(file);
+      var regex = new RegExp('video\/*');
 
       function supports_video (type) {
         var player = document.createElement('video');
         return eval(!!player.canPlayType && !!player.canPlayType(type));
-        }
+      }
+
+      //check if video is actually a video
+      if (regex.exec(type)) {
+        $('#form-group-file')
+        .addClass('has-success')
+        .removeClass('has-error');
+      } else {
+        $('#form-group-file')
+        .addClass('has-error')
+        .removeClass('has-success');
+      }
+
+      //check if its viewable in browser
       if (supports_video(type)) {
         Session.set({
           'url': fileURL,

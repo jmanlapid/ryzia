@@ -1,2 +1,3 @@
 Videos = new Mongo.Collection('videos');
-FakeVideos = new Mongo.Collection('fakeVideos');
+Views = new Mongo.Collection('views'); 
+//FakeVideos = new Mongo.Collection('fakeVideos');

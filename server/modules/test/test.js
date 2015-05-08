@@ -1,8 +1,8 @@
 if (Meteor.isServer) {
   Meteor.methods({
     loadFakeData: function () {
-      FakeVideos.remove({});
-      FakeVideos.insert({
+      Videos.remove({});
+      Videos.insert({
         title: 'video1',
         artist: 'video1',
         genres: ['rock'],
@@ -18,7 +18,7 @@ if (Meteor.isServer) {
         }
       });
 
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video35',
         artist: 'video52',
         genres: ['rock'],
@@ -34,7 +34,7 @@ if (Meteor.isServer) {
         }
       });
 
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video23',
         artist: 'artist23',
         genres: ['pop'],
@@ -50,7 +50,7 @@ if (Meteor.isServer) {
         }
       });
 
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video45',
         artist: 'artist45',
         genres: ['indie'],
@@ -65,7 +65,7 @@ if (Meteor.isServer) {
         }
       });
 
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video33',
         artist: 'artist33',
         genres: ['metal'],
@@ -80,7 +80,7 @@ if (Meteor.isServer) {
         }
       });
 
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video532',
         artist: 'artist522',
         genres: ['edm'],
@@ -95,7 +95,7 @@ if (Meteor.isServer) {
         }
       });
 
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video31',
         artist: 'artist37',
         genres: ['r&b'],
@@ -110,7 +110,7 @@ if (Meteor.isServer) {
         }
       });
 
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video5432',
         artist: 'artist73423',
         genres: ['hip hop'],
@@ -125,7 +125,7 @@ if (Meteor.isServer) {
         }
       });
 
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video653',
         artist: 'artist321',
         genres: ['psychedelic'],
@@ -140,7 +140,7 @@ if (Meteor.isServer) {
         }
       });
 
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video5215',
         artist: 'artist6376',
         genres: ['country'],
@@ -155,7 +155,7 @@ if (Meteor.isServer) {
         }
       });
 
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video02',
         artist: 'artist213',
         genres: ['hip hop'],
@@ -170,7 +170,7 @@ if (Meteor.isServer) {
         }
       });
 
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video61',
         artist: 'artist542',
         genres: ['rock', 'pop'],
@@ -185,7 +185,7 @@ if (Meteor.isServer) {
         }
       });
 
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video84',
         artist: 'artist79',
         genres: ['jazz', 'pop'],
@@ -200,7 +200,7 @@ if (Meteor.isServer) {
         }
       });
 
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video3',
         artist: 'artist3',
         genres: ['rock', 'pop', 'edm'],
@@ -215,7 +215,7 @@ if (Meteor.isServer) {
         }
       });
 
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video4',
         artist: 'artist4',
         genres: ['hip hop'],
@@ -230,7 +230,7 @@ if (Meteor.isServer) {
         }
       });
 
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video5',
         artist: 'artist5',
         genres: ['hip hop', 'pop'],
@@ -245,7 +245,7 @@ if (Meteor.isServer) {
         }
       });
 
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video6',
         artist: 'artist6',
         genres: ['indie', 'pop'],
@@ -260,7 +260,7 @@ if (Meteor.isServer) {
         }
       });
       /*
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video565',
         artist: 'artist984',
         genres: ['rock', 'pop'],
@@ -272,7 +272,7 @@ if (Meteor.isServer) {
         }
       });
 
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video012',
         artist: 'artist71',
         genres: ['psychedelic', 'pop'],
@@ -284,7 +284,7 @@ if (Meteor.isServer) {
         }
       });
 
-      FakeVideos.insert({
+      Videos.insert({
         title: 'video73',
         artist: 'artist67',
         genres: ['psychedelic', 'rock'],
